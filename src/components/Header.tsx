@@ -41,7 +41,7 @@ const Header = () => {
     <header 
       className={cn(
         "fixed w-full z-30 transition-all duration-300 py-4",
-        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-3" : "bg-transparent"
+        isScrolled ? "bg-white/90 backdrop-blur-md shadow-md py-3" : "bg-black/20 backdrop-blur-sm"
       )}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -49,7 +49,10 @@ const Header = () => {
           <img 
             src="/lovable-uploads/ec7cfc27-e79c-47fa-bda0-0b1c58f6ded2.png" 
             alt="Design by Aarav" 
-            className="h-16 w-auto"
+            className={cn(
+              "h-16 w-auto transition-all duration-300",
+              !isScrolled && "brightness-0 invert"
+            )}
           />
         </Link>
         
@@ -60,8 +63,9 @@ const Header = () => {
               key={item.path}
               to={item.path}
               className={cn(
-                "nav-link uppercase tracking-wider text-sm font-display",
-                location.pathname === item.path ? "active" : ""
+                "nav-link uppercase tracking-wider text-sm font-display transition-colors duration-300",
+                location.pathname === item.path ? "active" : "",
+                isScrolled ? "text-aarav-black hover:text-aarav-gold" : "text-white hover:text-aarav-gold"
               )}
             >
               {item.title}
@@ -69,7 +73,12 @@ const Header = () => {
           ))}
           <Button 
             asChild
-            className="bg-aarav-black hover:bg-aarav-gray-600 text-white rounded-none"
+            className={cn(
+              "rounded-none transition-colors duration-300",
+              isScrolled 
+                ? "bg-aarav-black hover:bg-aarav-gold text-white" 
+                : "bg-white/10 hover:bg-white/20 text-white border border-white/30"
+            )}
           >
             <Link to="/contact">Book Consultation</Link>
           </Button>
@@ -77,7 +86,10 @@ const Header = () => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden z-50 text-aarav-black"
+          className={cn(
+            "md:hidden z-50 transition-colors duration-300",
+            isScrolled ? "text-aarav-black" : "text-white"
+          )}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
