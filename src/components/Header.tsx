@@ -25,8 +25,6 @@ const Header = () => {
     { title: 'About', path: '/about' },
     { title: 'Services', path: '/services' },
     { title: 'Gallery', path: '/gallery' },
-    { title: 'Blog', path: '/blog' },
-    { title: 'Forum', path: '/forum' },
     { title: 'Contact', path: '/contact' },
   ];
 
@@ -69,8 +67,11 @@ const Header = () => {
               {item.title}
             </Link>
           ))}
-          <Button className="bg-aarav-black hover:bg-aarav-gray-600 text-white rounded-none">
-            Book Consultation
+          <Button 
+            asChild
+            className="bg-aarav-black hover:bg-aarav-gray-600 text-white rounded-none"
+          >
+            <Link to="/contact">Book Consultation</Link>
           </Button>
         </nav>
 
@@ -101,8 +102,11 @@ const Header = () => {
                 {item.title}
               </Link>
             ))}
-            <Button className="mt-4 bg-aarav-black hover:bg-aarav-gray-600 text-white rounded-none">
-              Book Consultation
+            <Button 
+              asChild
+              className="mt-4 bg-aarav-black hover:bg-aarav-gray-600 text-white rounded-none"
+            >
+              <Link to="/contact">Book Consultation</Link>
             </Button>
           </nav>
         </div>

@@ -1,5 +1,6 @@
 
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
@@ -27,11 +28,18 @@ const Hero = () => {
             Creating luxurious interiors that reflect your personality and lifestyle, blending artistry with functionality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-up animate-delay-200">
-            <Button className="bg-white text-aarav-black hover:bg-aarav-gold hover:text-white px-8 py-6">
-              Explore Our Work
+            <Button 
+              asChild
+              className="bg-white text-aarav-black hover:bg-aarav-gold hover:text-white px-8 py-6"
+            >
+              <Link to="/gallery">Explore Our Work</Link>
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-aarav-black px-8 py-6">
-              Book a Consultation
+            <Button 
+              asChild
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-aarav-black px-8 py-6"
+            >
+              <Link to="/contact">Book a Consultation</Link>
             </Button>
           </div>
         </div>
