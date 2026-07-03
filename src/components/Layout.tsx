@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import StyleQuiz from './StyleQuiz';
+import GameLauncher from './games/GameLauncher';
 
 interface LayoutProps {
   children: ReactNode;
@@ -13,9 +13,10 @@ const Layout = ({ children }: LayoutProps) => {
       <Header />
       <main className="flex-grow">{children}</main>
       <Footer />
-      <StyleQuiz />
+      <GameLauncher />
     </div>
   );
 };
 
 export default Layout;
+
