@@ -1,30 +1,31 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { portfolio } from '@/assets/portfolio';
 
 const services = [
   {
     number: '01',
     title: 'Residential Interior',
     tag: 'Homes & Apartments',
-    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=85',
+    image: portfolio.a1,
   },
   {
     number: '02',
     title: 'Commercial Spaces',
     tag: 'Offices & Retail',
-    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85',
+    image: portfolio.office1,
   },
   {
     number: '03',
     title: 'Complete Property Build',
     tag: 'Turnkey Construction',
-    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85',
+    image: portfolio.a4,
   },
   {
     number: '04',
     title: 'Hospitality',
     tag: 'Hotels & Restaurants',
-    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=2000&q=85',
+    image: portfolio.livingDining,
   },
 ];
 
