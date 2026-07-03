@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 
@@ -26,6 +26,18 @@ const Contact = () => {
     budget: '',
     message: '',
   });
+
+  useEffect(() => {
+    const apply = (msg: string) => setForm((f) => ({ ...f, message: msg }));
+    const stored = sessionStorage.getItem('quizPrefillMessage');
+    if (stored) {
+      apply(stored);
+      sessionStorage.removeItem('quizPrefillMessage');
+    }
+    const handler = (e: Event) => apply((e as CustomEvent<string>).detail);
+    window.addEventListener('quiz:prefill', handler);
+    return () => window.removeEventListener('quiz:prefill', handler);
+  }, []);
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
