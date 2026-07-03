@@ -19,7 +19,7 @@ const services = [
       'Lighting design',
       'Space optimization'
     ],
-    pricing: 'Starting from $2,500'
+    
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const services = [
       'Ergonomic workspace design',
       'Client presentation areas'
     ],
-    pricing: 'Starting from $5,000'
+    
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const services = [
       'Boutique accommodations',
       'Guest experience optimization'
     ],
-    pricing: 'Starting from $8,000'
+    
   }
 ];
 
