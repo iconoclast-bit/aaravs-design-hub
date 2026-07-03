@@ -65,7 +65,8 @@ const Gallery = () => {
               <motion.img
                 src={p.image}
                 alt={p.title}
-                whileHover={{ scale: 1.06 }}
+                loading="lazy"
+                whileHover={{ scale: 1.08 }}
                 transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0 h-full w-full object-cover"
               />
