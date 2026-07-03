@@ -14,6 +14,7 @@ import { portfolio } from '@/assets/portfolio';
 
 // Only authorized portfolio images — loop/reuse, never stock.
 const imagePool = [
+  ...portfolio.drive,
   portfolio.livingArch,
   portfolio.livingDining,
   portfolio.a1,
