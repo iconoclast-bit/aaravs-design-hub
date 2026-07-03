@@ -167,8 +167,7 @@ const Services = () => {
                 <CardContent className="pt-6">
                   <service.icon className="h-12 w-12 text-aarav-gold mx-auto mb-4" />
                   <h3 className="text-xl font-serif mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <div className="text-lg font-semibold text-aarav-gold">{service.price}</div>
+                  <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
