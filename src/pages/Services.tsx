@@ -2,6 +2,7 @@ import { ArrowRight, Check, User, Building, Hotel, Home, Palette, Lightbulb } fr
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import { Button } from '@/components/ui/button';
+import { portfolio } from '@/assets/portfolio';
 import { Card, CardContent } from '@/components/ui/card';
 
 const services = [
@@ -9,7 +10,7 @@ const services = [
     id: 1,
     title: 'Residential Design',
     description: 'Transform your home into a sanctuary that reflects your personality and meets your lifestyle needs with our comprehensive residential design services.',
-    image: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80',
+    image: portfolio.a1,
     icon: Home,
     features: [
       'Complete home makeovers',
@@ -25,7 +26,7 @@ const services = [
     id: 2,
     title: 'Commercial Spaces',
     description: 'Create inspiring workplaces that boost productivity and impress clients with thoughtful, functional commercial design solutions.',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80',
+    image: portfolio.office1,
     icon: Building,
     features: [
       'Office space planning',
@@ -41,7 +42,7 @@ const services = [
     id: 3,
     title: 'Hospitality Design',
     description: 'Craft memorable experiences for guests through atmospheric and functional hospitality spaces that tell your brand story.',
-    image: 'https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80',
+    image: portfolio.livingDining,
     icon: Hotel,
     features: [
       'Hotel lobby & guest rooms',
@@ -167,8 +168,7 @@ const Services = () => {
                 <CardContent className="pt-6">
                   <service.icon className="h-12 w-12 text-aarav-gold mx-auto mb-4" />
                   <h3 className="text-xl font-serif mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground mb-4">{service.description}</p>
-                  <div className="text-lg font-semibold text-aarav-gold">{service.price}</div>
+                  <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
