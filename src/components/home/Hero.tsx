@@ -60,18 +60,18 @@ const Hero = () => {
           variants={stagger}
           initial="hidden"
           animate="show"
-          className="font-serif font-light leading-[1.1] tracking-tight text-cream text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl space-y-1 md:space-y-2"
+          className="font-serif font-light leading-[1.2] tracking-tight text-cream text-5xl md:text-6xl lg:text-7xl"
         >
-          <span className="block overflow-hidden pb-1">
+          <span className="block overflow-hidden pb-2">
             <motion.span variants={line} className="block italic">Elevating</motion.span>
           </span>
-          <span className="block overflow-hidden pb-1">
+          <span className="block overflow-hidden pb-2">
             <motion.span variants={line} className="block">Spaces.</motion.span>
           </span>
-          <span className="block overflow-hidden pb-1">
+          <span className="block overflow-hidden pb-2">
             <motion.span variants={line} className="block italic text-bronze">Refining</motion.span>
           </span>
-          <span className="block overflow-hidden pb-1">
+          <span className="block overflow-hidden pb-2">
             <motion.span variants={line} className="block">Lifestyles.</motion.span>
           </span>
         </motion.h1>

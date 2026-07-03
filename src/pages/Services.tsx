@@ -19,7 +19,7 @@ const services = [
       'Lighting design',
       'Space optimization'
     ],
-    pricing: 'Starting from $2,500'
+    
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const services = [
       'Ergonomic workspace design',
       'Client presentation areas'
     ],
-    pricing: 'Starting from $5,000'
+    
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const services = [
       'Boutique accommodations',
       'Guest experience optimization'
     ],
-    pricing: 'Starting from $8,000'
+    
   }
 ];
 
@@ -60,19 +60,19 @@ const additionalServices = [
     title: 'Design Consultation',
     description: 'One-on-one consultation to discuss your vision and create a roadmap for your project.',
     icon: User,
-    price: '$150/hour'
+    
   },
   {
     title: 'Color & Material Selection',
     description: 'Expert guidance on color schemes, textures, and materials that align with your aesthetic.',
     icon: Palette,
-    price: '$500-$1,500'
+    
   },
   {
     title: 'Lighting Design',
     description: 'Comprehensive lighting solutions to enhance ambiance and functionality.',
     icon: Lightbulb,
-    price: '$800-$2,500'
+    
   }
 ];
 
@@ -138,8 +138,7 @@ const Services = () => {
                       </ul>
                     </div>
                     
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-aarav-gold">{service.pricing}</span>
+                    <div className="flex items-center justify-end">
                       <Button variant="outline" className="border-aarav-black hover:bg-aarav-black hover:text-white">
                         Learn More <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
