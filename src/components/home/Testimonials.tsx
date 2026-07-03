@@ -1,75 +1,48 @@
+import { motion } from 'framer-motion';
 
-import { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-const testimonials = [
-  {
-    id: 1,
-    content: "Aarav transformed our house into a home that perfectly reflects our personality. The attention to detail and understanding of our needs was exceptional.",
-    author: "Emily & David Johnson",
-    role: "Residential Clients"
-  },
-  {
-    id: 2,
-    content: "The redesign of our office space has significantly improved team morale and productivity. Aarav's vision for functional yet beautiful workspaces is unmatched.",
-    author: "Michael Chen",
-    role: "CEO, TechVision Inc."
-  },
-  {
-    id: 3,
-    content: "Working with Aarav was a seamless experience from concept to completion. The final design exceeded our expectations and has received countless compliments.",
-    author: "Sarah Williams",
-    role: "Boutique Hotel Owner"
-  }
-];
+const words = ['Bespoke', 'Considered', 'Tactile', 'Enduring', 'Quiet', 'Refined'];
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextTestimonial = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevTestimonial = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
-  };
-
   return (
-    <section className="section-padding bg-aarav-black text-white">
-      <div className="container mx-auto">
-        <h2 className="text-3xl md:text-4xl font-serif mb-12 text-center">Client Testimonials</h2>
-        
-        <div className="max-w-4xl mx-auto relative">
-          <div className="text-center px-8">
-            <div className="mb-8 text-5xl text-aarav-gold">"</div>
-            <p className="text-xl md:text-2xl mb-8 italic">
-              {testimonials[currentIndex].content}
-            </p>
-            <div className="w-12 h-0.5 bg-aarav-gold mx-auto mb-6"></div>
-            <h4 className="font-serif text-xl mb-1">{testimonials[currentIndex].author}</h4>
-            <p className="text-aarav-gray-300">{testimonials[currentIndex].role}</p>
-          </div>
-          
-          <div className="flex justify-center mt-12 space-x-4">
-            <button 
-              onClick={prevTestimonial} 
-              className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-aarav-gold hover:border-aarav-gold transition-colors"
-              aria-label="Previous testimonial"
+    <section className="relative bg-charcoal text-cream py-24 md:py-36 overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 grid grid-cols-12 gap-6">
+        <div className="col-span-12 md:col-span-5">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-cream/50">
+            (Testimony) — 05
+          </span>
+        </div>
+        <div className="col-span-12 md:col-span-7">
+          <motion.blockquote
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif font-light leading-[1.15] text-balance"
+            style={{ fontSize: 'clamp(1.5rem, 3.2vw, 2.75rem)' }}
+          >
+            <span className="text-bronze italic">"</span> Aarav's studio delivered a home
+            that feels inevitable — as though every joinery detail had always been
+            there. The process was unhurried, intelligent, and completely without ego.
+            <span className="text-bronze italic"> "</span>
+            <footer className="mt-10 text-xs uppercase tracking-[0.3em] text-cream/60 font-sans not-italic">
+              — Kavya & Rohan Mehra · Golf Course Road
+            </footer>
+          </motion.blockquote>
+        </div>
+      </div>
+
+      {/* Marquee */}
+      <div className="mt-24 md:mt-36 border-y border-cream/10 overflow-hidden">
+        <div className="marquee flex whitespace-nowrap py-8">
+          {[...words, ...words, ...words].map((w, i) => (
+            <span
+              key={i}
+              className="mx-8 font-serif italic text-cream/70"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}
             >
-              <ChevronLeft size={20} />
-            </button>
-            <button 
-              onClick={nextTestimonial} 
-              className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:bg-aarav-gold hover:border-aarav-gold transition-colors"
-              aria-label="Next testimonial"
-            >
-              <ChevronRight size={20} />
-            </button>
-          </div>
+              {w} <span className="text-bronze not-italic mx-6">✦</span>
+            </span>
+          ))}
         </div>
       </div>
     </section>

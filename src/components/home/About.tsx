@@ -1,42 +1,55 @@
-
-import { Button } from '@/components/ui/button';
+import { motion } from 'framer-motion';
 
 const About = () => {
   return (
-    <section id="about" className="section-padding bg-white">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif mb-6 relative">
-              <span className="text-aarav-gold">/</span> About Aarav
-              <span className="absolute -bottom-3 left-0 w-20 h-0.5 bg-aarav-gold"></span>
-            </h2>
-            <p className="text-aarav-gray-600 mb-6 text-balance">
-              Design by Aarav is a premium interior design studio founded on the principles of elegance, 
-              functionality, and innovation. With over a decade of industry experience, we've transformed 
-              countless spaces into extraordinary environments that inspire and delight.
-            </p>
-            <p className="text-aarav-gray-600 mb-8 text-balance">
-              Our approach combines timeless design principles with contemporary innovations, 
-              creating spaces that are both aesthetically striking and perfectly tailored to our clients' 
-              lifestyles and preferences. We believe that exceptional design should enhance daily life 
-              while reflecting the unique personality of each client.
-            </p>
-            <Button className="bg-aarav-black hover:bg-aarav-gold text-white">
-              Learn More About Us
-            </Button>
-          </div>
-          <div className="relative">
-            <div className="aspect-[3/4] overflow-hidden">
-              <img 
-                src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" 
-                alt="Interior Designer Aarav" 
-                className="object-cover w-full h-full"
-              />
-            </div>
-            <div className="absolute -bottom-6 -left-6 bg-aarav-gold p-6 text-aarav-black">
-              <p className="font-serif text-xl">A decade of design excellence</p>
-            </div>
+    <section id="about" className="section-padding bg-background text-foreground">
+      <div className="container mx-auto grid grid-cols-12 gap-6 md:gap-12">
+        <div className="col-span-12 md:col-span-4">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.9 }}
+            className="text-[10px] uppercase tracking-[0.4em] text-bronze"
+          >
+            (Ethos) — 02
+          </motion.p>
+        </div>
+        <div className="col-span-12 md:col-span-8">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="font-serif font-light leading-[1.05] tracking-tight text-balance"
+            style={{ fontSize: 'clamp(1.75rem, 4vw, 3.75rem)' }}
+          >
+            We treat every project as a portrait of the people who live within it —
+            <span className="italic text-bronze"> considered, tactile, quietly ambitious.</span>
+          </motion.h2>
+
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-10 max-w-3xl">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="text-sm md:text-base font-light text-muted-foreground leading-relaxed"
+            >
+              Founded by Aarav in Noida, our studio blends architectural discipline with
+              a collector's eye for materials — Italian stone, hand-troweled plaster,
+              solid brass, patinated timber.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-sm md:text-base font-light text-muted-foreground leading-relaxed"
+            >
+              From concept sketch to the final door handle, we deliver complete turnkey
+              builds under one roof — the calm of a single point of authorship.
+            </motion.p>
           </div>
         </div>
       </div>

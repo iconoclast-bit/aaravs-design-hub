@@ -1,74 +1,93 @@
-
-import { Link } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { useRef, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const projects = [
-  {
-    id: 1,
-    title: 'Modern Minimalist Apartment',
-    category: 'Residential',
-    image: 'https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    id: 2,
-    title: 'Contemporary Office Space',
-    category: 'Commercial',
-    image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    id: 3,
-    title: 'Luxury Villa Renovation',
-    category: 'Residential',
-    image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-  },
-  {
-    id: 4,
-    title: 'Boutique Hotel Lobby',
-    category: 'Hospitality',
-    image: 'https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-  }
+  { title: 'Chattarpur Farmhouse', category: 'Residential', span: 'md:col-span-7 md:row-span-2 aspect-[4/5]', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85' },
+  { title: 'DLF Corporate Suite', category: 'Commercial', span: 'md:col-span-5 aspect-[4/3]', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85' },
+  { title: 'Golf Course Penthouse', category: 'Residential', span: 'md:col-span-5 aspect-[4/3]', image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=85' },
+  { title: 'Aurelia Bistro', category: 'Hospitality', span: 'md:col-span-6 aspect-[3/4]', image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=85' },
+  { title: 'Sector 128 Villa', category: 'Complete Build', span: 'md:col-span-6 aspect-[3/4]', image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=85' },
 ];
 
 const Gallery = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [hovered, setHovered] = useState(false);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 400, damping: 40 });
+  const sy = useSpring(y, { stiffness: 400, damping: 40 });
+
+  const onMove = (e: React.MouseEvent) => {
+    const r = containerRef.current?.getBoundingClientRect();
+    if (!r) return;
+    x.set(e.clientX - r.left);
+    y.set(e.clientY - r.top);
+  };
+
   return (
-    <section className="section-padding bg-white">
+    <section
+      id="portfolio"
+      ref={containerRef}
+      onMouseMove={onMove}
+      className="relative section-padding bg-background text-foreground"
+    >
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row md:justify-between items-start md:items-end mb-12">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif mb-4 relative">
-              Featured Projects
-              <span className="absolute -bottom-3 left-0 w-20 h-0.5 bg-aarav-gold"></span>
-            </h2>
-            <p className="max-w-xl text-lg text-aarav-gray-500 mt-6">
-              Explore our portfolio of meticulously crafted spaces that showcase our design philosophy and attention to detail.
-            </p>
+        <div className="mb-16 md:mb-24 grid grid-cols-12 gap-6">
+          <div className="col-span-12 md:col-span-4">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-bronze">
+              (Selected Work) — 04
+            </span>
           </div>
-          <Link to="/gallery">
-            <Button className="mt-6 md:mt-0 bg-aarav-black hover:bg-aarav-gold text-white">
-              View Full Portfolio
-            </Button>
-          </Link>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className={`image-grid-item ${index === 0 || index === 3 ? 'md:col-span-2' : ''}`}
+          <div className="col-span-12 md:col-span-8">
+            <h2
+              className="font-serif font-light leading-[1.05]"
+              style={{ fontSize: 'clamp(2rem, 5vw, 4.5rem)' }}
             >
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full h-[300px] md:h-[400px] object-cover"
+              Recent <span className="italic">projects</span>,<br />
+              from concept to keys.
+            </h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 auto-rows-auto">
+          {projects.map((p, i) => (
+            <motion.a
+              key={p.title}
+              href="/gallery"
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 1, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+              className={`group relative overflow-hidden ${p.span} block`}
+            >
+              <motion.img
+                src={p.image}
+                alt={p.title}
+                whileHover={{ scale: 1.06 }}
+                transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute inset-0 h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <span className="text-aarav-gold uppercase tracking-wider text-sm mb-1">{project.category}</span>
-                <h3 className="text-white text-2xl font-serif">{project.title}</h3>
+              <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/25 transition-colors duration-700" />
+              <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8 text-cream opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-700">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-cream/70">
+                  {p.category}
+                </span>
+                <h3 className="mt-2 font-serif italic text-2xl md:text-3xl">{p.title}</h3>
               </div>
-            </div>
+            </motion.a>
           ))}
         </div>
       </div>
+
+      {/* Custom cursor */}
+      <motion.div
+        style={{ x: sx, y: sy, opacity: hovered ? 1 : 0 }}
+        className="pointer-events-none fixed left-0 top-0 z-50 hidden md:flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal text-cream text-[10px] uppercase tracking-[0.25em] mix-blend-difference transition-opacity duration-300"
+      >
+        View
+      </motion.div>
     </section>
   );
 };

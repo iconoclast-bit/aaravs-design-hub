@@ -1,70 +1,114 @@
-
-import { ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
   {
-    id: 1,
-    title: 'Residential Design',
-    description: 'Transform your home into a sanctuary that reflects your personality and meets your lifestyle needs.',
-    image: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+    number: '01',
+    title: 'Residential Interior',
+    tag: 'Homes & Apartments',
+    image: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=2000&q=85',
   },
   {
-    id: 2,
+    number: '02',
     title: 'Commercial Spaces',
-    description: 'Create inspiring workplaces that boost productivity and impress clients with thoughtful design.',
-    image: 'https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
+    tag: 'Offices & Retail',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=2000&q=85',
   },
   {
-    id: 3,
-    title: 'Hospitality Design',
-    description: 'Craft memorable experiences for guests through atmospheric and functional hospitality spaces.',
-    image: 'https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80'
-  }
+    number: '03',
+    title: 'Complete Property Build',
+    tag: 'Turnkey Construction',
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85',
+  },
+  {
+    number: '04',
+    title: 'Hospitality',
+    tag: 'Hotels & Restaurants',
+    image: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=2000&q=85',
+  },
 ];
 
 const Services = () => {
+  const [active, setActive] = useState<number | null>(null);
+
   return (
-    <section className="section-padding bg-aarav-gray-100">
-      <div className="container mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-serif mb-4">Our Design Services</h2>
-          <p className="max-w-2xl mx-auto text-lg text-aarav-gray-500">
-            Comprehensive design solutions tailored to transform your spaces into functional works of art
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div key={service.id} className="group bg-white shadow-md hover:shadow-xl transition-shadow duration-300">
-              <div className="relative h-64 overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-serif mb-3">{service.title}</h3>
-                <p className="text-aarav-gray-500 mb-4">{service.description}</p>
-                <Link 
-                  to="/services" 
-                  className="inline-flex items-center text-aarav-black font-medium hover:text-aarav-gold transition-colors"
-                >
-                  Learn More <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        <div className="mt-12 text-center">
-          <Link 
-            to="/services" 
-            className="inline-flex items-center border-b-2 border-aarav-black pb-1 font-medium text-lg hover:border-aarav-gold hover:text-aarav-gold transition-colors"
+    <section className="relative bg-charcoal text-cream overflow-hidden">
+      {/* Cross-fading backgrounds */}
+      <div className="absolute inset-0 pointer-events-none">
+        <AnimatePresence>
+          {active !== null && (
+            <motion.div
+              key={services[active].image}
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 0.35, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <img
+                src={services[active].image}
+                alt=""
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-charcoal/60" />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      <div className="relative z-10 section-padding">
+        <div className="container mx-auto">
+          <div className="flex items-baseline justify-between mb-16 md:mb-24">
+            <span className="text-[10px] uppercase tracking-[0.4em] text-cream/50">
+              (Services) — 03
+            </span>
+            <span className="text-[10px] uppercase tracking-[0.4em] text-cream/50">
+              Hover to explore
+            </span>
+          </div>
+
+          <ul
+            onMouseLeave={() => setActive(null)}
+            className="border-t border-cream/15"
           >
-            View All Services <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+            {services.map((s, i) => (
+              <li
+                key={s.number}
+                onMouseEnter={() => setActive(i)}
+                className="group relative border-b border-cream/15"
+              >
+                <div className="flex items-center justify-between py-8 md:py-10 cursor-pointer transition-all duration-500">
+                  <div className="flex items-center gap-6 md:gap-12">
+                    <span className="text-xs md:text-sm text-cream/40 tabular-nums">
+                      {s.number}
+                    </span>
+                    <motion.h3
+                      className="font-serif font-light leading-none"
+                      style={{ fontSize: 'clamp(1.75rem, 5.5vw, 5rem)' }}
+                      animate={{
+                        x: active === i ? 24 : 0,
+                        color: active === i ? 'hsl(var(--bronze))' : 'hsl(var(--cream))',
+                        fontStyle: active === i ? 'italic' : 'normal',
+                      }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      {s.title}
+                    </motion.h3>
+                  </div>
+                  <motion.span
+                    animate={{
+                      opacity: active === i ? 1 : 0.4,
+                      x: active === i ? -8 : 0,
+                    }}
+                    transition={{ duration: 0.5 }}
+                    className="hidden md:block text-[10px] uppercase tracking-[0.3em] text-cream/60"
+                  >
+                    {s.tag} →
+                  </motion.span>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
