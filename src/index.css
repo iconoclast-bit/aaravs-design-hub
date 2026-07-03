@@ -112,8 +112,12 @@
 
   /* Minimal underline input */
   .input-line {
-    @apply w-full bg-transparent border-0 border-b border-current/30 rounded-none px-0 py-4 text-base font-light tracking-wide focus:outline-none focus:border-current transition-colors placeholder:text-current/40;
+    @apply w-full bg-transparent border-0 border-b rounded-none px-0 py-4 text-base font-light tracking-wide focus:outline-none transition-colors;
+    border-bottom-color: hsl(var(--foreground) / 0.2);
+    color: hsl(var(--foreground));
   }
+  .input-line:focus { border-bottom-color: hsl(var(--bronze)); }
+  .input-line::placeholder { color: hsl(var(--foreground) / 0.35); }
 
   .marquee {
     animation: marquee 40s linear infinite;

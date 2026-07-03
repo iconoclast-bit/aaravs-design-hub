@@ -8,7 +8,7 @@ const Hero = () => {
   };
   const line = {
     hidden: { y: 60, opacity: 0 },
-    show: { y: 0, opacity: 1, transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] } },
+    show: { y: 0, opacity: 1, transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
   };
 
   const scrollToInquire = () => {
