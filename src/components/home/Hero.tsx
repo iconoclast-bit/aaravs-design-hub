@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowDown } from 'lucide-react';
+import { portfolio } from '@/assets/portfolio';
 
 const Hero = () => {
   const stagger = {
@@ -26,21 +27,19 @@ const Hero = () => {
         aria-hidden="true"
       >
         <div className="absolute inset-0 bg-charcoal" />
+        <img
+          src={portfolio.livingArch}
+          alt="Signature Design by Aarav interior"
+          className="absolute inset-0 h-full w-full object-cover opacity-55"
+        />
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-40 mix-blend-soft-light"
           style={{
             backgroundImage:
               'radial-gradient(1200px 600px at 20% 30%, hsl(var(--bronze) / 0.35), transparent 60%), radial-gradient(900px 500px at 80% 70%, hsl(var(--champagne) / 0.18), transparent 65%)',
           }}
         />
-        <div
-          className="absolute inset-0 opacity-[0.08] mix-blend-overlay"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")",
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-transparent to-charcoal" />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal" />
       </motion.div>
 
       {/* Top eyebrow */}

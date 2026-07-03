@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { galleryProjects } from '@/assets/portfolio';
 
-const projects = [
-  { title: 'Chattarpur Farmhouse', category: 'Residential', span: 'md:col-span-7 md:row-span-2 aspect-[4/5]', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=85' },
-  { title: 'DLF Corporate Suite', category: 'Commercial', span: 'md:col-span-5 aspect-[4/3]', image: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=85' },
-  { title: 'Golf Course Penthouse', category: 'Residential', span: 'md:col-span-5 aspect-[4/3]', image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1400&q=85' },
-  { title: 'Aurelia Bistro', category: 'Hospitality', span: 'md:col-span-6 aspect-[3/4]', image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1400&q=85' },
-  { title: 'Sector 128 Villa', category: 'Complete Build', span: 'md:col-span-6 aspect-[3/4]', image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=1400&q=85' },
-];
+const projects = galleryProjects.map((p) => ({
+  title: p.title,
+  category: p.category,
+  span: p.span,
+  image: p.src,
+}));
 
 const Gallery = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,7 +65,8 @@ const Gallery = () => {
               <motion.img
                 src={p.image}
                 alt={p.title}
-                whileHover={{ scale: 1.06 }}
+                loading="lazy"
+                whileHover={{ scale: 1.08 }}
                 transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
                 className="absolute inset-0 h-full w-full object-cover"
               />
