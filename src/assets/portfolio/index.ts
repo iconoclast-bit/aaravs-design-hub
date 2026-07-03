@@ -5,6 +5,7 @@ import livingArch from './living-arch.jpg.asset.json';
 import livingDining from './living-dining.jpg.asset.json';
 import office1 from './office-1.jpg.asset.json';
 import office2 from './office-2.jpg.asset.json';
+import { driveImages } from '../drive';
 
 export const portfolio = {
   a1: a1.url,
@@ -14,6 +15,7 @@ export const portfolio = {
   livingDining: livingDining.url,
   office1: office1.url,
   office2: office2.url,
+  drive: driveImages,
 };
 
 export const galleryProjects = [
