@@ -10,6 +10,19 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { portfolio } from '@/assets/portfolio';
+
+// Only authorized portfolio images — loop/reuse, never stock.
+const imagePool = [
+  portfolio.livingArch,
+  portfolio.livingDining,
+  portfolio.a1,
+  portfolio.a4,
+  portfolio.a5,
+  portfolio.office1,
+  portfolio.office2,
+];
+const img = (i: number) => imagePool[i % imagePool.length];
 
 const projects = [
   {
