@@ -10,20 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { portfolio } from '@/assets/portfolio';
-
-// Only authorized portfolio images — loop/reuse, never stock.
-const imagePool = [
-  ...portfolio.drive,
-  portfolio.livingArch,
-  portfolio.livingDining,
-  portfolio.a1,
-  portfolio.a4,
-  portfolio.a5,
-  portfolio.office1,
-  portfolio.office2,
-];
-const img = (i: number) => imagePool[i % imagePool.length];
+import { drive } from '@/assets/drive';
 
 const projects = [
   {
@@ -32,7 +19,7 @@ const projects = [
     category: 'Residential',
     location: 'Mumbai, India',
     year: '2024',
-    image: img(0),
+    image: drive.d20,
     description: 'A sleek 1,200 sq ft apartment featuring clean lines, neutral tones, and smart storage solutions. The design maximizes natural light while maintaining a sophisticated urban aesthetic.',
     features: ['Open floor plan', 'Smart home integration', 'Custom built-ins', 'Premium finishes']
   },
@@ -42,69 +29,69 @@ const projects = [
     category: 'Commercial',
     location: 'Bengaluru, India',
     year: '2024',
-    image: img(1),
-    description: 'A 15,000 sq ft tech company headquarters designed to foster creativity and collaboration. Features flexible workspaces, wellness areas, and sustainable materials.',
-    features: ['Flexible workstations', 'Wellness rooms', 'Sustainable materials', 'Acoustic design']
+    image: drive.d11,
+    description: 'A tech company workspace designed to foster creativity and collaboration. Features flexible workstations, custom joinery, and acoustically tuned zones.',
+    features: ['Flexible workstations', 'Custom joinery', 'Acoustic design', 'Warm task lighting']
   },
   {
     id: 3,
-    title: 'Luxury Villa Renovation',
+    title: 'Luxury Villa Living Room',
     category: 'Residential',
     location: 'Gurugram, India',
     year: '2023',
-    image: img(2),
-    description: 'Complete renovation of a 6,500 sq ft Mediterranean villa. Blend of classic architecture with contemporary interiors, featuring a resort-style pool area.',
-    features: ['Pool house design', 'Wine cellar', 'Home theater', 'Master suite renovation']
+    image: drive.d13,
+    description: 'Refined villa living and dining ensemble with sculptural lighting, layered textiles, and a curated art wall — a warm, ceremonial family space.',
+    features: ['Statement chandelier', 'Custom console', 'Layered textiles', 'Curated art wall']
   },
   {
     id: 4,
-    title: 'Boutique Hotel Lobby',
+    title: 'Boutique Hotel Foyer',
     category: 'Hospitality',
     location: 'Goa, India',
     year: '2023',
-    image: img(3),
-    description: 'Art Deco-inspired lobby design for a luxury boutique hotel. Features custom lighting, local artwork, and luxurious materials that reflect Miami\'s vibrant culture.',
-    features: ['Custom lighting design', 'Local art curation', 'Marble reception desk', 'Tropical garden views']
+    image: drive.d5,
+    description: 'Art Deco-inspired arrival experience with a sculpted staircase, marble flooring, and a bespoke dining vignette that anchors the lobby.',
+    features: ['Sculpted staircase', 'Marble flooring', 'Bespoke dining vignette', 'Ambient cove lighting']
   },
   {
     id: 5,
-    title: 'Industrial Loft Conversion',
+    title: 'Urban Loft Living',
     category: 'Residential',
     location: 'Delhi, India',
     year: '2023',
-    image: img(4),
-    description: 'Transformation of a 2,800 sq ft warehouse into a modern family loft. Exposed brick, steel beams, and large windows create an urban sanctuary.',
-    features: ['Exposed brick walls', 'Steel beam ceiling', 'Mezzanine office', 'Industrial lighting']
+    image: drive.d4,
+    description: 'A generous open living zone with a slatted timber partition, deep lounge seating and a moody accent wall — cinematic yet livable.',
+    features: ['Slatted timber partition', 'Deep lounge seating', 'Moody accent wall', 'Layered lighting']
   },
   {
     id: 6,
-    title: 'Upscale Restaurant Interior',
+    title: 'Corporate Trophy Lounge',
     category: 'Commercial',
     location: 'Hyderabad, India',
     year: '2022',
-    image: img(5),
-    description: 'Elegant fine dining restaurant with a modern interpretation of classic steakhouse design. Rich materials and intimate lighting create an sophisticated atmosphere.',
-    features: ['Custom banquette seating', 'Wine display walls', 'Mood lighting', 'Open kitchen design']
+    image: drive.d9,
+    description: 'A brand-forward lounge with a custom display cabinet, saffron accent seating and a directional lighting scheme that frames every trophy and artefact.',
+    features: ['Custom display cabinet', 'Accent lounge seating', 'Directional lighting', 'Brand-led palette']
   },
   {
     id: 7,
-    title: 'Wellness Spa Retreat',
+    title: 'Serene Entryway Retreat',
     category: 'Hospitality',
     location: 'Rishikesh, India',
     year: '2022',
-    image: img(6),
-    description: 'Tranquil spa and wellness center designed to promote relaxation and rejuvenation. Natural materials and earth tones create a harmonious connection with nature.',
-    features: ['Treatment rooms', 'Meditation garden', 'Hydrotherapy pools', 'Natural materials']
+    image: drive.d6,
+    description: 'A calm arrival moment with a mirrored medallion, live planting and a hand-detailed console — set the tone for a restorative stay.',
+    features: ['Mirrored medallion', 'Live planting', 'Hand-detailed console', 'Natural stone flooring']
   },
   {
     id: 8,
-    title: 'Executive Penthouse',
+    title: 'Executive Master Suite',
     category: 'Residential',
     location: 'Pune, India',
     year: '2022',
-    image: img(7),
-    description: 'Sophisticated penthouse design with panoramic city views. High-end finishes, custom furniture, and smart home technology create the ultimate luxury living experience.',
-    features: ['Floor-to-ceiling windows', 'Rooftop terrace', 'Smart home automation', 'Custom millwork']
+    image: drive.d3,
+    description: 'A hotel-inspired master bedroom featuring a tufted headboard, floral panelling and layered lighting for a restful, sophisticated retreat.',
+    features: ['Tufted headboard wall', 'Custom panelling', 'Layered bedside lighting', 'Bespoke wardrobe']
   }
 ];
 
