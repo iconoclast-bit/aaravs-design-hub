@@ -107,7 +107,7 @@ const DesignDnaQuiz = ({ onClose }: Props) => {
   }, [done, scores]);
 
   // Mark completed once when result computes
-  useMemo(() => {
+  useEffect(() => {
     if (result) {
       markCompleted('dna', { result: result.summary });
     }
