@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion, PanInfo, useMotionValue, useTransform } from 'framer-motion';
 import { Check, Download, MessageCircle, RotateCw, X } from 'lucide-react';
 import { portfolio, galleryProjects } from '@/assets/portfolio';
