@@ -60,19 +60,19 @@ const additionalServices = [
     title: 'Design Consultation',
     description: 'One-on-one consultation to discuss your vision and create a roadmap for your project.',
     icon: User,
-    price: '$150/hour'
+    
   },
   {
     title: 'Color & Material Selection',
     description: 'Expert guidance on color schemes, textures, and materials that align with your aesthetic.',
     icon: Palette,
-    price: '$500-$1,500'
+    
   },
   {
     title: 'Lighting Design',
     description: 'Comprehensive lighting solutions to enhance ambiance and functionality.',
     icon: Lightbulb,
-    price: '$800-$2,500'
+    
   }
 ];
 
