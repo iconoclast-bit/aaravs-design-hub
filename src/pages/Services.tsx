@@ -138,8 +138,7 @@ const Services = () => {
                       </ul>
                     </div>
                     
-                    <div className="flex items-center justify-between">
-                      <span className="text-lg font-semibold text-aarav-gold">{service.pricing}</span>
+                    <div className="flex items-center justify-end">
                       <Button variant="outline" className="border-aarav-black hover:bg-aarav-black hover:text-white">
                         Learn More <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
