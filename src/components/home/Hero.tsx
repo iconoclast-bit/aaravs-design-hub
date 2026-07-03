@@ -1,67 +1,108 @@
-
-import { Button } from '@/components/ui/button';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
+  const stagger = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
+  };
+  const line = {
+    hidden: { y: 60, opacity: 0 },
+    show: { y: 0, opacity: 1, transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+  };
+
+  const scrollToInquire = () => {
+    document.getElementById('inquire')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section className="relative h-screen flex items-center justify-center bg-aarav-black overflow-hidden">
-      <div 
-        className="absolute inset-0 z-0 opacity-50 bg-cover bg-center"
-        style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&q=85&fm=jpg&crop=entropy&cs=srgb&w=2400)',
-          backgroundPosition: 'center 30%'
-        }}
-      />
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-aarav-black/60 via-aarav-black/40 to-aarav-black"></div>
-      
-      <div className="container mx-auto px-4 relative z-20 text-center text-white">
-        <div className="flex flex-col items-center">
-          <img 
-            src="/lovable-uploads/ec7cfc27-e79c-47fa-bda0-0b1c58f6ded2.png" 
-            alt="Design by Aarav" 
-            className="h-28 md:h-32 w-auto brightness-0 invert mb-6 animate-fade-in"
-          />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-light mb-6 animate-fade-up">
-            Elevating Spaces<br className="hidden md:block" /> With Refined Design
-          </h1>
-          <p className="max-w-xl text-lg md:text-xl text-aarav-gray-200 mb-8 animate-fade-up animate-delay-100">
-            Creating luxurious interiors that reflect your personality and lifestyle, blending artistry with functionality.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-up animate-delay-200">
-            <Button 
-              asChild
-              className="bg-white text-aarav-black hover:bg-aarav-gold hover:text-white px-8 py-6"
-            >
-              <Link to="/gallery">Explore Our Work</Link>
-            </Button>
-            <Button 
-              asChild
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-aarav-black px-8 py-6"
-            >
-              <Link to="/contact">Book a Consultation</Link>
-            </Button>
-          </div>
-        </div>
+    <section className="relative h-screen w-full overflow-hidden bg-charcoal text-cream">
+      {/* Background */}
+      <motion.div
+        initial={{ scale: 1.15, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2.4, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-0"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=85"
+          alt="Sculptural architectural interior with warm natural light"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal" />
+      </motion.div>
+
+      {/* Top eyebrow */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, duration: 1 }}
+        className="absolute top-28 md:top-32 left-0 right-0 z-10 flex justify-center"
+      >
+        <span className="text-[10px] md:text-xs uppercase tracking-[0.4em] text-cream/60">
+          Noida · India — Est. 2014
+        </span>
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        <motion.h1
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+          className="font-serif font-light leading-[0.95] tracking-tight text-cream"
+          style={{ fontSize: 'clamp(2.75rem, 8vw, 8rem)' }}
+        >
+          <span className="block overflow-hidden">
+            <motion.span variants={line} className="block italic">Elevating</motion.span>
+          </span>
+          <span className="block overflow-hidden">
+            <motion.span variants={line} className="block">Spaces.</motion.span>
+          </span>
+          <span className="block overflow-hidden">
+            <motion.span variants={line} className="block italic text-bronze">Refining</motion.span>
+          </span>
+          <span className="block overflow-hidden">
+            <motion.span variants={line} className="block">Lifestyles.</motion.span>
+          </span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.4, duration: 1 }}
+          className="mt-10 max-w-md text-sm md:text-base font-light text-cream/70 text-balance"
+        >
+          A boutique studio crafting bespoke interiors and complete turnkey builds
+          across residential, commercial, and hospitality environments.
+        </motion.p>
+
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.7, duration: 1 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.98 }}
+          onClick={scrollToInquire}
+          className="btn-magnetic btn-glow mt-12 bg-transparent text-cream border border-cream/30 hover:border-bronze hover:text-bronze"
+        >
+          Start Your Project
+          <span className="inline-block h-px w-8 bg-current transition-all duration-500 group-hover:w-14" />
+        </motion.button>
       </div>
-      
-      <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
-        <a href="#about" aria-label="Scroll down">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="32" 
-            height="32" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            className="text-white opacity-70"
-          >
-            <path d="M12 5v14M5 12l7 7 7-7"/>
-          </svg>
-        </a>
+
+      {/* Bottom row */}
+      <div className="absolute bottom-8 left-0 right-0 z-10 flex items-center justify-between px-6 md:px-12 text-[10px] md:text-xs uppercase tracking-[0.3em] text-cream/50">
+        <span className="hidden md:block">(01) — Architecture of Living</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex items-center gap-2 mx-auto md:mx-0"
+        >
+          <span>Scroll</span>
+          <ArrowDown className="h-3 w-3" />
+        </motion.div>
+        <span className="hidden md:block">150+ Projects Delivered</span>
       </div>
     </section>
   );

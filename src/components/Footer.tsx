@@ -47,8 +47,6 @@ const Footer = () => {
               <li><Link to="/about" className="text-aarav-gray-300 hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/services" className="text-aarav-gray-300 hover:text-white transition-colors">Services</Link></li>
               <li><Link to="/gallery" className="text-aarav-gray-300 hover:text-white transition-colors">Project Gallery</Link></li>
-              <li><Link to="/blog" className="text-aarav-gray-300 hover:text-white transition-colors">Blog & News</Link></li>
-              <li><Link to="/forum" className="text-aarav-gray-300 hover:text-white transition-colors">Forum</Link></li>
               <li><Link to="/contact" className="text-aarav-gray-300 hover:text-white transition-colors">Contact Us</Link></li>
             </ul>
           </div>
@@ -59,15 +57,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin size={18} className="mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-aarav-gray-300">123 Design Street, Creative City, 10001</span>
+                <span className="text-aarav-gray-300">Sector 62, Noida — 201309, India</span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-2 flex-shrink-0" />
-                <a href="tel:+11234567890" className="text-aarav-gray-300 hover:text-white transition-colors">+1 (123) 456-7890</a>
+                <a href="https://wa.me/919599765044" target="_blank" rel="noopener noreferrer" className="text-aarav-gray-300 hover:text-white transition-colors">+91 95997 65044</a>
               </li>
               <li className="flex items-center">
                 <Mail size={18} className="mr-2 flex-shrink-0" />
-                <a href="mailto:info@designbyaarav.com" className="text-aarav-gray-300 hover:text-white transition-colors">info@designbyaarav.com</a>
+                <a href="mailto:studio@designbyaarav.com" className="text-aarav-gray-300 hover:text-white transition-colors">studio@designbyaarav.com</a>
               </li>
             </ul>
           </div>
